@@ -35,6 +35,7 @@ const MainTitle = ({onButtonCallback, onColorPickerCallback}) => {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
+        height: '100%',
       }}
     >
         <Box>
@@ -68,7 +69,7 @@ const MainTitle = ({onButtonCallback, onColorPickerCallback}) => {
                 mb: 4,
                 maxWidth: '2xl',
                 mx: 'auto',
-                backdropFilter: 'blur(10px)',
+                
                 color: theme.palette.mode === 'dark' ? 'gray.200' : 'gray.800',
                 }}
             >
@@ -95,7 +96,7 @@ const MainTitle = ({onButtonCallback, onColorPickerCallback}) => {
                 transition: 'background-color 0.3s',
                 fontSize: 14,
                 whiteSpace: 'nowrap',
-                backdropFilter: 'blur(10px)',
+                
               }}
               onClick={onButtonCallback}
             >
@@ -114,7 +115,7 @@ const MainTitle = ({onButtonCallback, onColorPickerCallback}) => {
                 maxWidth: '400px',
                 mx: 'auto',
                 
-                backdropFilter: 'blur(200px)',
+                
                 }}
                 >
                 <Typography

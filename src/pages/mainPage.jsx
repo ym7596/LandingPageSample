@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
+import BackgroundWithGradients from '../components/pageCoponents/main-background';
 import MainTitle from '../components/pageCoponents/main-title';
 
 const backgroundImages = {
@@ -18,6 +19,11 @@ const backgroundImages = {
     '/resource/Home_Hero_2_dark.png', // Dark 모드, 색상 1번
   ],
 };
+
+const topGradient = '/resource/top_gradient.png'; // 상단 그라데이션 이미지
+const bottomGradient = '/resource/bottom_gradient.png'; // 하단 그라데이션 이미지
+
+
 
 const MainPage = () => {
   const theme = useTheme();
@@ -38,37 +44,34 @@ const MainPage = () => {
 
 
   return (
-    <Box sx={{
+    <Box
+    sx={{
       position: 'relative',
       width: '100%',
       overflow: 'hidden',
-      minHeight: 'calc(150vh + 250px)'
-    }}> 
-        <Box
-        sx={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          mt: '250px',
-          backgroundImage:  `url(${isDarkMode ? backgroundImages.dark[colorIndex] : backgroundImages.light[colorIndex]})`, // 그라데이션과 배경 이미지 설정
-          backgroundSize: 'auto 100%', // 배경 이미지 크기 설정
-          backgroundRepeat: 'no-repeat', // 배경 이미지 반복 설정
-          backgroundPosition: 'center top', // 배경 이미지 위치 설정
-          zIndex: 0, // 배경 이미지가 버튼 뒤에 표시되도록 설정
-          opacity: 0.7,
-         // 배경 이미지의 투명도 설정
-        }}
-      />
-        <Box sx={{
-          position: 'relative', 
-          zIndex: 1, 
-          minHeight: '50vh',
-          
-          }}>
-          <MainTitle onButtonCallback={onButtonCallback} onColorPickerCallback={onColorPickerCallback} />
-        </Box>
-   
+      minHeight: 'calc(100vh)',
+      height: '150vh',
+    }}
+  >
+    <BackgroundWithGradients
+      backgroundImage={isDarkMode ? backgroundImages.dark[colorIndex] : backgroundImages.light[colorIndex]}
+      topGradient={topGradient}
+      bottomGradient={bottomGradient}
+    />
+    <Box
+      sx={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 2, // MainTitle이 백그라운드 이미지 위에 오도록 설정
+        minHeight: '100vh',
+      
+      }}
+    >
+      <MainTitle onButtonCallback={onButtonCallback} onColorPickerCallback={onColorPickerCallback} />
     </Box>
+  </Box>
   );
 };
 

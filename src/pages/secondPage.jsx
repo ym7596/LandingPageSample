@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import FeatureBox from "../components/FeatureBox";
 const SecondPage = () => {
@@ -7,9 +7,13 @@ const SecondPage = () => {
     const isDarkMode = theme.palette.mode === 'dark';
 
     return (
-        <Box sx={{
+        <Container
+        disableGutters
+         sx={{
             p:2,
-            mt: 10,
+            
+            maxWidth: {xs:'100%', md: 'xl'},
+           
         }}>
             <Typography
                 variant="h2"
@@ -18,14 +22,14 @@ const SecondPage = () => {
                 fontWeight: 700, // 폰트 굵기 설정
                 fontSize: '3.2rem', // 폰트 크기 설정
                 
-                textAlign: 'center', // 텍스트 정렬 설정
+                textAlign: {xs: 'left', md:'center'}, // 텍스트 정렬 설정
                 verticalAlign: 'middle', // 수직 정렬 설정
                 
-                mb: 10,
-                color: theme.palette.mode === 'dark' ? 'white' : 'black',
-                mx: 'auto',
-                fontFamily: 'Space Grotesk, Arial, sans-serif',
                 
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                
+                fontFamily: 'Space Grotesk, Arial, sans-serif',
+                pl: {xs: 2, md: 0},
                 }}
                 >
                 Try DRFT-1
@@ -36,9 +40,11 @@ const SecondPage = () => {
                 sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' }, // 모바일에서는 세로 정렬, 데스크탑에서는 가로 정렬
-                justifyContent: 'space-evenly',
+                justifyContent: 'center',
                 alignItems: 'center',
-                mt: 1,
+                // 모바일에서는 4px, 데스크탑에서는 10px 간격
+                mt: 10,
+                
                 }}
                 >
                <FeatureBox
@@ -58,8 +64,8 @@ const SecondPage = () => {
                 sx={{
                     position: 'relative',
                     width: '100%',
-                    height: '738px',
-                    mt: { xs: -10,sm: 0, md: 15 },
+                    height: '800px',
+                    mt: { xs: -20,sm: 0, md: 15 },
                     backgroundImage: `url(${isDarkMode ? 
                         '/resource/Product_Hero_dark.png' : 
                         '/resource/Product_Hero_light.png'})`, // 테마에 따라 배경 이미지 설정
@@ -71,7 +77,7 @@ const SecondPage = () => {
                 }}
                 />
                 
-        </Box>
+        </Container>
     )
 }
 
