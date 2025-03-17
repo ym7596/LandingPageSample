@@ -9,12 +9,12 @@ const backgroundImages = {
   light: [
     '/resource/Home_Hero_1_light.png', // Light 모드, 색상 0번
     '/resource/Home_Hero_2_light.png', // Light 모드, 색상 1번
-    '/resource/Home_Hero_1_light.png', // Light 모드, 색상 0번
-    '/resource/Home_Hero_2_light.png', // Light 모드, 색상 1번
+    '/resource/Home_Hero_1_dark.png', // Dark 모드, 색상 0번
+    '/resource/Home_Hero_2_dark.png', // Light 모드, 색상 1번
   ],
   dark: [
-    '/resource/Home_Hero_1_dark.png', // Dark 모드, 색상 0번
-    '/resource/Home_Hero_2_dark.png', // Dark 모드, 색상 1번
+    '/resource/Home_Hero_1_light.png', // Light 모드, 색상 0번
+    '/resource/Home_Hero_2_light.png', // Dark 모드, 색상 1번
    '/resource/Home_Hero_1_dark.png', // Dark 모드, 색상 0번
     '/resource/Home_Hero_2_dark.png', // Dark 모드, 색상 1번
   ],
@@ -25,7 +25,7 @@ const bottomGradient = '/resource/bottom_gradient.png'; // 하단 그라데이�
 
 
 
-const MainPage = () => {
+const MainPage = ({onColorPickIndex}) => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
   const [colorIndex, setColorIndex] = useState(0);
@@ -40,6 +40,7 @@ const MainPage = () => {
   const onColorPickerCallback = (color) => {
     // 색상 선택 시 콜백 함수
     setColorIndex(color);
+    onColorPickIndex(color);
   }
 
 

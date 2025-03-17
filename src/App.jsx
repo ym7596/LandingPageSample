@@ -18,6 +18,16 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const onColorPickIndex = (index) => {
+    console.log('Color Index:', index);
+    if (index === 0 || index === 1){
+      setIsDarkMode(false);
+    }
+    else{
+      setIsDarkMode(true);
+    }
+  }
+
   const theme = createTheme({
     palette: {
       mode: isDarkMode ? 'dark' : 'light',
@@ -52,12 +62,12 @@ function App() {
             />
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', flexGrow: 1 }}>
-            <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            {/* <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} /> */}
           </Box>
           </Toolbar>
       </AppBar>
       <Box>
-        <MainPage />
+        <MainPage onColorPickIndex={onColorPickIndex} />
       </Box>
       <SecondPage />
       <Footer />
